@@ -30,5 +30,6 @@ dependencies:
   - pip
   - pip:
       - probfit
-#  - pymc3 >=3.8
-#  - vpython >=7.6
+  - pymc3 >=3.8
+  - vpython >=7.6
+  - jupyterlab-vpython >= 3.1
