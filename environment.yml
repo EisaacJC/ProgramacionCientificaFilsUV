@@ -1,6 +1,7 @@
 name: compclass
 channels:
   - conda-forge
+  - vpython
 dependencies:
   - python >=3.6
   - numpy >=1.16
