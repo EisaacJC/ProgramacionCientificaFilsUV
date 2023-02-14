@@ -7,6 +7,7 @@
 *.docx
 *.xlsx
 *.xls
+*.ipynb_checkpoints
 syllabus/computational.pdf
 /compclass/*
 
