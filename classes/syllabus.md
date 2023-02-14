@@ -1,102 +1,113 @@
-# PHYS 5041/6041: Computational Physics
+# FISICA NRC 95002: Programación Científica
 
-## Class information:
-* Instructor: Henry Schreiner @ CERN in Geneva, Switzerland via WebEx.
-* M, W, F from 8:55 - 9:50 AM in Geo/Phys Room 300/Hauck. Remote attendance (by request) and recorded lectures will be available.
-* Office hours: 10AM-11AM Monday and Friday via video chat (WebEx or Skype, TBD).
+## Información de la clase:
+* Instructor: Horacio Tapia-McClung @ IIIA-UV en Xalapa, Ver.
+* L y Mi de 8:00 - 9:59 AM, Ma 9:00 - 10:59 AM in Edificio: C-MFEX. Presencial.
+* Ma y Mi clase en salón de cómputo. (Por confirmar)
+* Horario de oficina: Ju 9AM a 10AM.
 * Course websites:
-    - Blackboard: `meta_schreihf_2962 (Meta 18FS-Full) TOPICS IN PHYSICS (001)`
-    - Lecture recordings: [uc.box.com/v/PES0765](https://uc.box.com/v/PES0765)
-    - Source files: [github.com/henryiii/compclass](https://github.com/henryiii/compclass).
+    - [Microsoft TEAMS: toda comunicación relacionada a este curso será por medio de esta plataforma.](https://teams.microsoft.com/l/team/19%3a55-iAxBBnbeQg05qhE6ZtvkFID_pES5Qu__Xk7gSokE1%40thread.tacv2/conversations?groupId=7f9c8f75-ae33-4cb5-acdd-a589ad9eb9f9&tenantId=3c907651-d8c6-4ca6-a8a4-6a242430e653)
+    
+    <!--- Source files: [github.com/htapia/compclass](https://github.com/htapia/compclass).-->
 
-## Introduction:
-This course is designed to introduce students to modern computational methods for physics data analysis and modeling. The course is intended for upper-level undergraduates and graduate students. The course was designed for physics students, but should also be appropriate for students in mathematics and other physical sciences.  Some programming experience will be useful, but is not required. The course uses Python and looks at a variety of common problems and Scientific Python libraries. The aim of the course is to teach students how to solve problems and what to look for when searching for tools, rather than to teach all the details of specific tools. Common data manipulation and numerical analysis techniques will be investigated, with a strong focus on visualizing the results.
+## Introducción:
+El curso esta pensado para presentar métodos computacionales modernos para la resolución de problemas en Física, 
+ya sea a través del analis de datos y el modelado a partir de las ecuaciones que describen los fenomenos naturales. El curso no requiere experiencia en programacion.
+El curso utiliza Python como lenguaje principal y expolora el uso de varias librerias cientificas con el objetivo de que el estudiante aprenda a resolver 
+problemas en sus estudios de Fisica. Algunas tecnicas de manipulacion de datos y analisis numerico seran presentadas con enfasis en la visualizacion.
 
-## Prerequisites:
+## Pre-requisitos:
 
-Some knowledge of multi-dimensional calculus, linear algebra, and ordinary differential equations.
+Conocimientos básicos de álgebra, cálculo y geometría. Conceptos básicos de Física.
 
-## Textbooks
-Required textbook: *Computational Physics: Problem Solving with Python*, 3rd edition, by Landau, Páez, and Bordeianu [(free Enlarged eTextbook Python Third Edition)](https://www.eidos.ic.i.u-tokyo.ac.jp/~tau/lecture/computational_physics/docs/computational_physics.pdf)
+## Texto
+Se suigieren los siguiente textos:
+- *Computational Physics: Problem Solving with Python*, 3ra edicon, by Landau, Páez, and Bordeianu [(eTextbook disponible)](https://www.eidos.ic.i.u-tokyo.ac.jp/~tau/lecture/computational_physics/docs/computational_physics.pdf)
 
-Recommended textbook: *Python For Data Analysis*, 2nd Edition, by Wes McKinney (Author of the Pandas library). This book covers modern Python syntax and the Numpy, Matplotlib, and Pandas libraries from a data scientist's perspective.
+- *Python For Data Analysis*, 2nd Edition, by Wes McKinney (Author of the Pandas library). Este libro presenta el lenguaje de programacion Python y el ecosistema
+formado por las librearias Numpy, Matplotlib, y Pandas.
 
-## Expected outcome
+## Objetivos esperados
 
-Students should be able to solve a significant problem, use scientific Python tools, use the git version control system, and present their work. 
+Al termino del curso el estudiante deberá ser capaz de resolver problemas usando herramientas de programación científica para el análisis de datos y el modelaje matemático de sistemas fásicos. 
 
-## Topics:
+## Tópicos:
 
-#### Scientific computing in Python
-The course will cover basics needed for modern scientific computing, including the shell, git, and Python. Students will learn to manipulate non-uniform data and visualize the results. Students will learn how to design a solution to a problem and present it to others. The course will also cover performance topics; students will learn to watch for slow code and optimize code performance.
+#### Programación Científica con Python
+Se cubre lo básico para comenzar a realizar cómputo científico moderno. El estudiante aprende a manipular datos y visualizar los resultados. Aprende a diseñar soluciones a un problema y presentarlo ante sus pares. También se hace hincapié en como mejorar la ejecución de código.
 
-#### Mathematical topics that will be covered
-Uncertainty and error: A look at making a calculation based on physical measurements and interpreting the results.
+#### Tópicos de matematicas que se contemplan
+- Errores e incertidumbres: Realizando cálculos con base en mediciones fde cantidades físicas e interpretación de los resultados.
 
-Linear algebra: An introduction to vector and matrix manipulations and some assorted linear algebra topics.
+- Algebra lineal: Introducción a operaciones con vectores y matrices.
 
-Differentiation and Integration:  Covering several integration and differentiation methods, Monte Carlo integration, as well as using packages.
+- Diferenciación e integración numérica:  Introducción a métodos numéricos de integración y diferenciación.
 
-Statistical distributions and fitting: Manually performing a linear regression, then using commonly used packages to perform the fitting. A look at correlation coefficients and visualization.
+- Distribuciones estadísticas y regresión lineal.
 
-Differential equations.
+Si el tiempo lo permite se tocarán los siguientes temas
 
-Fourier analysis and filtering signals.
+- Ecuaciones diferenciales
+- Análisis de Fourier
+- Machine Learning.
 
-Machine Learning: A brief intro to Machine Learning, including a look at the toolkits for ML.
+#### Proyecto terminal
 
-#### Term Project
+Los estudiantes desarrollarán un proyecto terminal donde presentan su solución a un problema específico el cual puede ser el modelado matemático de sistemas fisicos, el análisis de datos de un experimento, etc. Los resultados seran presentados en una exposición frente a grupo y en un documento escrito.
 
-Students will select and solve a specific problem and present the results.
+## Evalaución
+* Tareas semanales: 30%
+* Proyecto terminal:
+    * Presentación: 20%
+    * Reporte escrito: 20%
+* Asistencia y participación: 15%
+* Examenes en clase 15%
 
-## Grading
-* Weekly problem set: 45%
-* Term project:
-    * Oral presentation: 20%
-    * Writeup: 20%
-* JiTT Quizzes: 15%
+## Procedimientos y politicas en el salon de clase
 
-Just in Time Teaching (JiTT) quizzes will be due at midnight before the class they cover. 25% of the grade for the JiTT quizzes will be based solely on on-time completion. These will test preparation (reading the material in the book or other recommended sources) before the class begins, and will help shape the lecture to provide the most relevant information.
+Los dias Lu y Mi de 8:00 - 9:00 AM la clase consistirá en taller de trabajo con el ayudante.
 
-## Classroom Procedures/Policies
+#### Recursos tecnológicos para la clase
 
-#### Technology use during/for class
+La clase es interactiva;
+El estudiante tendrá acceso al salón de cómputo de la facultad. Se espera que el estudiante utilice estas instalaciones o su computadora personal. Por confirmar, la clase se desarrollará dentro del salón de cómputo los días Martes y Miércoles.
 
-The class will be interactive; registered students have access to OSC computing resources. Students are expected to either use the computers in the classroom or their personal devices. Lectures are designed as notebook that students can follow along with during the class.
+#### Política de asistencia
 
-#### Attendance Policy
+Minimo 80% de asistencia para acreditacion ordinaria. Minimo 65% para extraordinaria.
 
-You are expected to attend each class if you can, and watch the recording if you are not available (with prior permission). All materials should be turned in promptly before the set deadlines - please contact me if you need an extension *before* a deadline is passed.
+#### Conducta
 
-#### Conduct
+La esperada por el codigo de conducta de la Universidad Veracruzana.
 
-The University Rules, including the Student Code of Conduct, are applicable and should be followed in this class. Any violation will be dealt with on an individual basis according to the severity of the misconduct. For example, any material based heavily on outside sources should be attributed in a code comment or a similar manor.
+## Cronograma tentativo:
 
+A continuacion un cronograma tentativo, puede estar sujeto a cambios.
 
-## Schedule:
-
-Chapters in the required book are noted when applicable. This is a tentative schedule and subject to change.
-
-| Week | Monday                       | Wednesday                  | Friday              |
+| Semana | Lunes                       | Martes                  | Miercoles              |
 |------|------------------------------|----------------------------|---------------------|
-| 1  | 8-27  Introduction             | 8-29 Using Python part 1   | 8-31 Using Python part 2 |
-| 2  | 9-03  *Labor day*              | 9-05 OO programming (4)    | 9-07 Error accumulation (2) |
-| 3  | 9-10  Numerical tools          | 9-12 Plotting (3)          | 9-14 Using git |
-| 4  | 9-17  Random numbers (5)       | 9-19 Monte Carlo (5)       | 9-21  **Project selection** |
-| 5  | 9-24  Integration rules (6)    | 9-26 MC Integration (6)    | 9-28 Numerical differentiation (7) |
-| 6  | 10-01 Vectorization (8)        | 10-03 Linear algebra (8)   | 10-05 Linear regression (8) |
-| 7  | 10-08 Structured tabular data  | 10-10 Cuts and histograms  | 10-12 *Fall reading days* |
-| 8  | 10-15 Generating distributions | 10-17 Minimization and fitting | 10-19 Fitting tools |
-| 9  | 10-22 Confidence intervals     | 10-24 Markov Chain Monte Carlo | 10-26 Performance computing (14) |
-| 10 | 10-29 Intro to ODEs (9)        | 10-31 Runge–Kutta algorithm (9) | 11-02 Solving ODE problems (9) |
-| 11 | 11-05 Fourier Series (10)      | 11-07 Fast Fourier Transform (10) | 11-09 **Project progress report** |
-| 12 | 11-12 *Veterans day*           | 11-14 **Project progress report** | 11-16 Filtering signals (10) |
-| 13 | 11-19 **Review**               | 11-21 **Student requested topics** | 11-23 *Thanksgiving* |
-| 14 | 11-26 Static computation graphs | 11-28 Applied ML topics | 11-30 Sharing and documenting code |
-| 15 | 12-03 **Term project presentations** | 12-05 **Term project presentations** | 12-07 **Term project presentations** |
+| 1  | 2-6  **Feriado**                | 2-7 Presentación             | 2-8 Configuracion y uso de Python 1 |
+| 2  | 2-13  Basicos de Python 2      | 2-14 Programación OO (4)      | 2-15 Errores |
+| 3  | 2-20  Numerical tools          | 2-21 Plotting (3)             | 2-22 **Inhabil academicos**  |
+| 4  | 2-27  Random numbers (5)       | 2-28 Monte Carlo (5)          | 3-1  **Project selection** |
+| 5  | 3-6  Integration rules (6)     | 3-7 MC Integration (6)        | 3-8 Numerical differentiation (7) |
+| 6  | 3-13 Vectorization (8)         | 3-14 Linear algebra (8)       | 3-15 Linear regression (8) |
+| 7  | 3-20 **Feriado**               | 3-21 Cuts and histograms      | 3-22 *Fall reading days* |
+| 8  | 3-27 Generating distributions  | 3-28 Minimization and fitting | 3-29 Fitting tools |
+| 9  | 4-3 **Feriado**                | 4-4 **Feriado**               | 4-5 **Feriado** |
+| 10 | 4-10 Intro to ODEs (9)         | 4-11 Runge–Kutta algorithm (9)   | 4-12 Solving ODE problems (9) |
+| 11 | 4-17 Fourier Series (10)       | 4-18 Fast Fourier Transform (10) | 4-19 **Project progress report** |
+| 12 | 4-25 *Veterans day*            | 4-25 **Project progress report** | 4-26 Filtering signals (10) |
+| 13 | 5-1 **Feriado**                | 5-2 **Student requested topics** | 5-3 *Thanksgiving* |
+| 14 | 5-8 Static computation graphs  | 5-9 Applied ML topics            | 5-10 **Inhabil academicos** |
+| 15 | 5-15 **Feriado**               | 5-16 **Term project **           | 5-17 **Term project presentations** |
+| 16 | 5-22 **Feriado**               | 5-23 **Term project **           | 5-24 **Term project presentations** |
+| 17 | 5-29 **Feriado**               | 5-30 **Term project **           | 5-31 **Term project presentations** |
+| 18 | 6-5 *Examenes ordinarios*      | 6-6 *Examenes ordinarios*        | 6-7 *Examenes ordinarios* |
+| 18 | 6-12 *Examenes ordinarios*     | 6-13 *Examenes ordinarios*       | 6-14 *Examenes ordinarios* |
+| 18 | 6-19 *Examenes extraordinarios*| 6-20 *Examenes extraordinarios*  | 6-21 *Examenes extraordinarios* |
 
-Final writeup due during examinations week of 12-10.
 
 ------------------------- 
 
-I reserve the right to update this syllabus as class needs arise. Be assured that I will communicate to you any changes to our schedule, syllabus or policies quickly and efficiently through Blackboard.
+El instructor se reserva el derecho de actualizar o modificar esta plan de trabajo como sea necesario. Cualquier cambio o modificación será debidamente comunicada a través de la plataforma Teams.
