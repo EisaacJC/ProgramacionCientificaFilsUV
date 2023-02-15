@@ -1,0 +1,1809 @@
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+
+// START JAVASCRIPT
+;(function() {;
+var ρσ_modules = {};
+var a, b, sum, step, gotnext, gotrepeat, prediction, restarting, previous;
+ρσ_modules.pythonize = {};
+
+(function(){
+    function strings() {
+        var string_funcs, exclude, name;
+        string_funcs = set("capitalize strip lstrip rstrip islower isupper isspace lower upper swapcase center count endswith startswith find rfind index rindex format join ljust rjust partition rpartition replace split rsplit splitlines zfill".split(" "));
+        if (!arguments.length) {
+            exclude = (function(){
+                var s = ρσ_set();
+                s.jsset.add("split");
+                s.jsset.add("replace");
+                return s;
+            })();
+        } else if (arguments[0]) {
+            exclude = Array.prototype.slice.call(arguments);
+        } else {
+            exclude = null;
+        }
+        if (exclude) {
+            string_funcs = string_funcs.difference(set(exclude));
+        }
+        var ρσ_Iter0 = string_funcs;
+        ρσ_Iter0 = ((typeof ρσ_Iter0[Symbol.iterator] === "function") ? (ρσ_Iter0 instanceof Map ? ρσ_Iter0.keys() : ρσ_Iter0) : Object.keys(ρσ_Iter0));
+        for (var ρσ_Index0 of ρσ_Iter0) {
+            name = ρσ_Index0;
+            (ρσ_expr_temp = String.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name] = (ρσ_expr_temp = ρσ_str.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name];
+        }
+    };
+    if (!strings.__module__) Object.defineProperties(strings, {
+        __module__ : {value: "pythonize"}
+    });
+
+    ρσ_modules.pythonize.strings = strings;
+})();
+async function __main__() {
+"use strict";
+    var display = canvas;
+    var scene = canvas();
+
+    function input(arg) {
+    	arg = arg || {}
+    	if (arg.prompt !== undefined && arg.prompt != '') return prompt(arg.prompt)
+    	else if (typeof arg === 'string') return prompt(arg)
+    	else return prompt()
+    }
+
+    var version, print, arange, __name__, type, ρσ_ls, w, h, hw, hh, left, top, lineheight, a, b, sum, orange, s, shift, n, y, lvaldrag, rvaldrag, oplabel, eqlabel, resultlabel, xleft, xright, xresult, linenumbers, lines, i, c, ytop, xend, loopoutline, comment, regular_prompt, prompt, seetext, nexttext, varlabels, vars, names, tag, lend, value, prints, p, varcomment, restarting, gotnext, gotrepeat, step, prediction, keylabel, next, rtext, repeat;
+    version = ρσ_list_decorate([ "3.2", "glowscript" ]);
+    Array.prototype['+'] = function(r) {return this.concat(r)}
+    Array.prototype['*'] = function(r) {return __array_times_number(this, r)}
+    window.__GSlang = "vpython";
+    print = GSprint;
+    arange = range;
+    __name__ = "__main__";
+    type = pytype;
+    var strings = ρσ_modules.pythonize.strings;
+
+    strings();
+    "8";
+    w = 600;
+    "9";
+    h = 600;
+    "10";
+    scene.width = w;
+    "11";
+    scene.height = h;
+    "12";
+    hw = w["/"](2);
+    "13";
+    hh = h["/"](2);
+    "14";
+    scene.fov = .001;
+    "15";
+    scene.range = hw;
+    "16";
+    scene.background = color.white;
+    "17";
+    scene.userspin = false;
+    "18";
+    scene.userzoom = false;
+    "19";
+    scene.userpan = false;
+    "20";
+    scene.lights = ρσ_list_decorate([]);
+    "21";
+    ρσ_interpolate_kwargs.call(this, distant_light, [ρσ_desugar_kwargs({direction: vec(0, 0, 1), color: color.white})]);
+    "22";
+    left = 1["-u"]()["*"](.95)["*"](hw);
+    "23";
+    top = .95["*"](hh);
+    "24";
+    lineheight = 20;
+    "25";
+    a = 0;
+    "26";
+    b = 0;
+    "27";
+    sum = 0;
+    "28";
+    orange = .8["*"](color.orange);
+    "40";
+    s = "a = 5\na = a + 3\nb = 10\na = a + b\nb = 1\nsum = 0\nwhile b < 4:\n    sum = sum + b\n    print(b, sum)\n    b = b + 1\nprint(\"sum =\", sum)";
+    "43";
+    shift = .18["*"](hh)["+"](50);
+    "44";
+    for (var ρσ_Index1 = 0; ρσ_Index1["<"](5); ρσ_Index1++) {
+        n = ρσ_Index1;
+        "45";
+        ρσ_interpolate_kwargs.call(this, curve, [ρσ_desugar_kwargs({pos: ρσ_list_decorate([ vec(40, 1["-u"]()["*"](n)["*"](40)["-"](1["*"](shift)), 0), vec(.9["*"](hw), 1["-u"]()["*"](n)["*"](40)["-"](1["*"](shift)), 0), vec(.9["*"](hw), 1["-u"]()["*"](n)["*"](40)["-"](1["*"](shift))["+"](30), 0), vec(40, 1["-u"]()["*"](n)["*"](40)["-"](1["*"](shift))["+"](30), 0), vec(40, 1["-u"]()["*"](n)["*"](40)["-"](1["*"](shift)), 0) ]), radius: 2, color: color.black, shininess: 0})]);
+    }
+    "48";
+    y = .18["*"](hh);
+    "49";
+    lvaldrag = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({text: "", height: 30, box: false, color: orange, opacity: 0})]);
+    "50";
+    rvaldrag = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({text: "", height: 30, box: false, color: orange, opacity: 0})]);
+    "51";
+    oplabel = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: vec(90, y, 0), text: "", height: 30, box: false, color: orange, opacity: 0})]);
+    "52";
+    eqlabel = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: vec(150, y, 0), text: "", height: 30, box: false, color: orange, opacity: 0})]);
+    "53";
+    resultlabel = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: vec(180, y, 0), text: "", height: 30, box: false, color: orange, opacity: 0})]);
+    "55";
+    xleft = vec(60, y, 0);
+    "56";
+    xright = vec(120, y, 0);
+    "57";
+    xresult = vec(180, y, 0);
+    "59";
+    s = s.split("\n");
+    "60";
+    ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({pos: vec(left["-"](1["*"](15)), top["-"](1["*"](10))["-"](1["*"](lineheight)["*"](len(s))["/"](2)), 0), size: vec(40, lineheight["*"](len(s)), 1), color: color.gray(.5)})]);
+    "61";
+    linenumbers = ρσ_list_decorate([ null ]);
+    "62";
+    lines = ρσ_list_decorate([ null ]);
+    "63";
+    var ρσ_Iter2 = range(1, len(s)["+"](1));
+    ρσ_Iter2 = ((typeof ρσ_Iter2[Symbol.iterator] === "function") ? (ρσ_Iter2 instanceof Map ? ρσ_Iter2.keys() : ρσ_Iter2) : Object.keys(ρσ_Iter2));
+    for (var ρσ_Index2 of ρσ_Iter2) {
+        i = ρσ_Index2;
+        "64";
+        linenumbers.append(ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({text: "{}".format(i), pos: vec(left["+"](5), top["-"](1["*"](lineheight)["*"](i)), 0), align: "right", box: false, color: color.black, opacity: 0, height: 15})]));
+        "66";
+        lines.append(ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({text: "{}".format(ρσ_getitem(s, i["-"](1["*"](1)))), pos: vec(left["+"](15), top["-"](1["*"](lineheight)["*"](i)), 0), align: "left", box: false, color: color.black, opacity: 0, height: 15})]));
+    }
+    "69";
+    c = color.blue;
+    "70";
+    ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: vec(left, hh["-"](1["*"](10)), 0), text: "<b>Python Program<\/b>", align: "left", color: c, box: false, opacity: 1})]);
+    "71";
+    ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: vec(left, 0, 0), text: "<b>Print Output</b>", align: "left", color: c, box: false, opacity: 1})]);
+    "73";
+    ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: vec(.4["*"](hw), .85["*"](hh), 0), text: "<b>Computer Processing Unit (CPU)</b>", color: c, align: "center", height: .05["*"](hh), box: 0})]);
+    "75";
+    ρσ_interpolate_kwargs.call(this, curve, [ρσ_desugar_kwargs({pos: ρσ_list_decorate([ vec(1["-u"]()["*"](40), 0, 0), vec(.95["*"](hw), 0, 0), vec(.95["*"](hw), .95["*"](hh), 0), vec(1["-u"]()["*"](40), .95["*"](hh), 0), vec(1["-u"]()["*"](40), 0, 0) ]), radius: 5, color: c, shininess: 0})]);
+    "78";
+    ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: vec(.4["*"](hw), 1["-u"]()["*"](55), 0), text: "<b>Computer Memory</b>", color: c, align: "center", height: .05["*"](hh), box: 0})]);
+    "80";
+    ρσ_interpolate_kwargs.call(this, curve, [ρσ_desugar_kwargs({pos: ρσ_list_decorate([ vec(1["-u"]()["*"](40), 1["-u"]()["*"](30), 0), vec(.95["*"](hw), 1["-u"]()["*"](30), 0), vec(.95["*"](hw), 1["-u"]()["*"](.95)["*"](hh), 0), vec(1["-u"]()["*"](40), 0["-"](1["*"](.95)["*"](hh)), 0), vec(1["-u"]()["*"](40), 1["-u"]()["*"](30), 0) ]), radius: 5, color: c, shininess: 0})]);
+    "83";
+    ytop = top["-"](1["*"](lineheight)["*"](6.25));
+    "84";
+    xend = left["+"](.48["*"](hw));
+    "85";
+    loopoutline = ρσ_interpolate_kwargs.call(this, curve, [ρσ_desugar_kwargs({pos: ρσ_list_decorate([ vec(left["+"](10), ytop, 0), vec(xend, ytop, 0), vec(xend, top["-"](1["*"](lineheight)["*"](10.5)), 0), vec(left["+"](10), top["-"](1["*"](lineheight)["*"](10.5)), 0), vec(left["+"](10), ytop, 0) ]), radius: 2, color: c, shininess: 0, visible: false})]);
+    "89";
+    comment = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: vec(1["-u"]()["*"](20), .75["*"](hh), 0), text: "", align: "left", color: color.black, box: false, opacity: 0})]);
+    "90";
+    regular_prompt = vec(1["-u"]()["*"](40)["+"](.95["*"](hw))["/"](2), 20, 0);
+    "91";
+    prompt = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: regular_prompt, text: "", align: "center", color: color.black, box: false, opacity: 0})]);
+    "92";
+    seetext = "Click the NEXT button to execute line {}.";
+    "93";
+    nexttext = "Click the NEXT button to go to line {}.";
+    "94";
+    varlabels = ρσ_list_decorate([]);
+    "95";
+    vars = ρσ_dict();
+    "96";
+    names = ρσ_list_decorate([ "a", "b", "sum" ]);
+    "98";
+    for (var ρσ_Index3 = 0; ρσ_Index3["<"](3); ρσ_Index3++) {
+        i = ρσ_Index3;
+        "99";
+        tag = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: vec(40, 1["-u"]()["*"](i)["*"](40)["-"](1["*"](shift))["+"](15), 0), text: ρσ_getitem(names, i), color: color.black, height: 20, xoffset: 1["-u"]()["*"](20), opacity: 0, visible: false})]);
+        "100";
+        lend = vec(40["+"](.85["*"](hw))["/"](2), 1["-u"]()["*"](i)["*"](40)["-"](1["*"](shift))["+"](13), 0);
+        "101";
+        value = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: lend, text: "", height: 25, box: false, color: color.black, opacity: 0})]);
+        "102";
+        ρσ_setitem(vars, ρσ_getitem(names, i), (function(){
+            var ρσ_d = ρσ_dict();
+            ρσ_d.set("result", 0);
+            ρσ_d.set("nvar", i);
+            ρσ_d.set("tag", tag);
+            ρσ_d.set("value", value);
+            return ρσ_d;
+        }).call(this));
+    }
+    "104";
+    prints = ρσ_list_decorate([]);
+    "105";
+    p = ρσ_list_decorate([ "<b>1  1</b>", "<b>2  3</b>", "<b>3  6</b>", "<b>sum = 6</b>" ]);
+    "106";
+    for (var ρσ_Index4 = 0; ρσ_Index4["<"](4); ρσ_Index4++) {
+        i = ρσ_Index4;
+        "107";
+        prints.append(ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: vec(left, 1["-u"]()["*"](30)["-"](1["*"](i)["*"](30)), 0), text: ρσ_getitem(p, i), height: 23, align: "left", color: color.black, box: false, opacity: 1, visible: false})]));
+    }
+    "111";
+    varcomment = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({align: "left", text: "\"a\" is called a \"variable\" because its\nvalue may vary during the program.", pos: vec(1["-u"]()["*"](20), .75["*"](hh)["-"](1["*"](6)["*"](lineheight)), 0), box: false, color: orange, opacity: 0, visible: false})]);
+    "120";
+    restarting = false;
+    "121";
+    gotnext = false;
+    "122";
+    gotrepeat = false;
+    "123";
+    a = 5;
+    "124";
+    b = 1;
+    "125";
+    sum = 0;
+    "126";
+    step = 1;
+    "127";
+    prediction = null;
+    "128";
+    keylabel = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({text: "", pos: varcomment.pos["+"](vec(20, 1["-u"]()["*"](35), 0)), box: false, align: "left", visible: false})]);
+    "131";
+    async function clearmemory() {
+        var ρσ_ls, v;
+        "132";
+        var ρσ_Iter5 = vars;
+        ρσ_Iter5 = ((typeof ρσ_Iter5[Symbol.iterator] === "function") ? (ρσ_Iter5 instanceof Map ? ρσ_Iter5.keys() : ρσ_Iter5) : Object.keys(ρσ_Iter5));
+        for (var ρσ_Index5 of ρσ_Iter5) {
+            v = ρσ_Index5;
+            "133";
+            ρσ_getitem(ρσ_getitem(vars, v), "tag").visible = false;
+            "134";
+            ρσ_getitem(ρσ_getitem(vars, v), "value").text = "";
+        }
+    };
+    if (!clearmemory.__module__) Object.defineProperties(clearmemory, {
+        __module__ : {value: null}
+    });
+
+    "136";
+    async function clearprints() {
+        var ρσ_ls, p;
+        "137";
+        var ρσ_Iter6 = prints;
+        ρσ_Iter6 = ((typeof ρσ_Iter6[Symbol.iterator] === "function") ? (ρσ_Iter6 instanceof Map ? ρσ_Iter6.keys() : ρσ_Iter6) : Object.keys(ρσ_Iter6));
+        for (var ρσ_Index6 of ρσ_Iter6) {
+            p = ρσ_Index6;
+            "138";
+            p.visible = false;
+        }
+    };
+    if (!clearprints.__module__) Object.defineProperties(clearprints, {
+        __module__ : {value: null}
+    });
+
+    "140";
+    async function restart() {
+        var ρσ_ls, L;
+        "141";
+        "142";
+        restarting = true;
+        "143";
+        gotnext = false;
+        "144";
+        gotrepeat = false;
+        "145";
+        prediction = null;
+        "146";
+        a = 5;
+        "147";
+        b = 1;
+        "148";
+        sum = 0;
+        "149";
+        step = 1;
+        "150";
+        var ρσ_Iter7 = ρσ_list_decorate([ lvaldrag, rvaldrag, oplabel, eqlabel, resultlabel, comment, prompt ]);
+        ρσ_Iter7 = ((typeof ρσ_Iter7[Symbol.iterator] === "function") ? (ρσ_Iter7 instanceof Map ? ρσ_Iter7.keys() : ρσ_Iter7) : Object.keys(ρσ_Iter7));
+        for (var ρσ_Index7 of ρσ_Iter7) {
+            L = ρσ_Index7;
+            "151";
+            L.text = "";
+        }
+        "152";
+        var ρσ_Iter8 = lines.slice(1);
+        ρσ_Iter8 = ((typeof ρσ_Iter8[Symbol.iterator] === "function") ? (ρσ_Iter8 instanceof Map ? ρσ_Iter8.keys() : ρσ_Iter8) : Object.keys(ρσ_Iter8));
+        for (var ρσ_Index8 of ρσ_Iter8) {
+            L = ρσ_Index8;
+            "153";
+            if (ρσ_equals(L.text.slice(0, 3), "<b>")) {
+                "154";
+                L.text = L.text.slice(3, 1["-u"]()["*"](4));
+                "155";
+                L.color = color.black;
+                "156";
+                L.height = 15;
+            }
+        }
+        "157";
+        varcomment.pos = vec(1["-u"]()["*"](20), .75["*"](hh)["-"](1["*"](6)["*"](lineheight)), 0);
+        "159";
+        varcomment.text = "\"a\" is called a \"variable\" because its\nvalue may vary during the program.";
+        "160";
+        varcomment.visible = false;
+        "161";
+        (await clearmemory());
+        "162";
+        (await clearprints());
+    };
+    if (!restart.__module__) Object.defineProperties(restart, {
+        __module__ : {value: null}
+    });
+
+    "164";
+    async function nextb() {
+        "165";
+        "166";
+        gotnext = true;
+    };
+    if (!nextb.__module__) Object.defineProperties(nextb, {
+        __module__ : {value: null}
+    });
+
+    "168";
+    async function checknext() {
+        "169";
+        "170";
+        if (gotnext) {
+            "171";
+            gotnext = false;
+            "172";
+            return true;
+        }
+        "173";
+        return false;
+    };
+    if (!checknext.__module__) Object.defineProperties(checknext, {
+        __module__ : {value: null}
+    });
+
+    "175";
+    ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({text: "<b>RESTART</b>", bind: restart})]);
+    "176";
+    scene.append_to_caption("         ");
+    "177";
+    next = ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({text: "<b>NEXT</b>", bind: nextb})]);
+    "178";
+    scene.append_to_caption("   ");
+    "180";
+    async function repeatb() {
+        "181";
+        "182";
+        gotrepeat = true;
+    };
+    if (!repeatb.__module__) Object.defineProperties(repeatb, {
+        __module__ : {value: null}
+    });
+
+    "184";
+    async function checkrepeat() {
+        "185";
+        "186";
+        if (gotrepeat) {
+            "187";
+            gotrepeat = false;
+            "188";
+            return true;
+        }
+        "189";
+        return false;
+    };
+    if (!checkrepeat.__module__) Object.defineProperties(checkrepeat, {
+        __module__ : {value: null}
+    });
+
+    "191";
+    rtext = "<b>Repeat line {}</b>";
+    "192";
+    repeat = ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({text: rtext.format(1), bind: repeatb})]);
+    "193";
+    scene.append_to_caption(" ");
+    "197";
+    async function toggle(i) {
+        var ρσ_ls, L;
+        "198";
+        "199";
+        step = i;
+        "200";
+        L = ρσ_getitem(lines, i);
+        "201";
+        L.pos.x = left["+"](15);
+        "202";
+        if (ρσ_equals(L.text.slice(0, 3), "<b>")) {
+            "203";
+            L.text = L.text.slice(3, 1["-u"]()["*"](4));
+            "204";
+            L.color = color.black;
+            "205";
+            L.height = 15;
+            "206";
+        } else {
+            "207";
+            L.text = "<b>"["+"](L.text)["+"]("</b>");
+            "208";
+            L.color = orange;
+            "209";
+            L.height = 23;
+            "210";
+            if (8["<="](step) && step["<="](10)) {
+                "211";
+                L.pos.x=L.pos.x["-"](10);
+            }
+        }
+    };
+    if (!toggle.__argnames__) Object.defineProperties(toggle, {
+        __argnames__ : {value: ["i"]},
+        __module__ : {value: null}
+    });
+
+    "213";
+    async function step1a() {
+        "214";
+        "215";
+        restarting = false;
+        "216";
+        next.disabled = false;
+        "217";
+        repeat.text = rtext.format(step);
+        "218";
+        repeat.disabled = true;
+        "219";
+        prompt.pos = regular_prompt;
+        "220";
+        prompt.pos.y = hh["/"](2);
+        "221";
+        prompt.text = "Click the NEXT button to start the program.";
+        "222";
+        prompt.color = orange;
+        "223";
+        prompt.visible = true;
+        "224";
+        while (true) {
+            "225";
+            (await rate(30));
+            "226";
+            if (restarting) {
+                return ρσ_list_decorate([ 1, null, null, 5, null, null, 5, "a" ]);
+            }
+            "227";
+            if ((await checknext())) {
+                break;
+            }
+            "228";
+        }
+        if (ρσ_getitem(lines, 1).color.equals(color.black)) {
+            (await toggle(1));
+        }
+        "229";
+        prompt.pos = regular_prompt;
+        "230";
+        prompt.text = "";
+        "235";
+        comment.text = "The CPU chooses an available container\nin computer memory, places the number 5\nin that container, and makes a note that\nthis location in memory can be referred\nto with the name \"a\".";
+        "236";
+        varcomment.color = orange;
+        "237";
+        varcomment.visible = true;
+        "238";
+        prompt.color = color.black;
+        "239";
+        return ρσ_list_decorate([ 1, null, null, 5, null, null, 5, "a" ]);
+    };
+    if (!step1a.__module__) Object.defineProperties(step1a, {
+        __module__ : {value: null}
+    });
+
+    "241";
+    async function step1b(nt, bt) {
+        "242";
+        prompt.text = nexttext.format(2);
+        "243";
+        prompt.color = orange;
+        "244";
+        comment.color = color.black;
+        "245";
+        if (bt) {
+            "246";
+            ρσ_getitem(ρσ_getitem(vars, "a"), "value").text = "";
+            "247";
+            ρσ_getitem(ρσ_getitem(vars, "a"), "tag").visible = false;
+            "248";
+            (await toggle(1));
+            "249";
+            return;
+        }
+        "250";
+        varcomment.visible = false;
+        "251";
+        (await toggle(1));
+        "252";
+        (await toggle(2));
+    };
+    if (!step1b.__argnames__) Object.defineProperties(step1b, {
+        __argnames__ : {value: ["nt", "bt"]},
+        __module__ : {value: null}
+    });
+
+    "254";
+    async function step2a() {
+        "255";
+        "256";
+        (await clearmemory());
+        "257";
+        ρσ_getitem(ρσ_getitem(vars, "a"), "value").text = "5";
+        "258";
+        ρσ_getitem(ρσ_getitem(vars, "a"), "tag").visible = true;
+        "259";
+        a = 5;
+        "260";
+        repeat.text = rtext.format(step);
+        "261";
+        repeat.disabled = true;
+        "269";
+        comment.text = "The CPU reads 5 from the \"a\" container,\nadds 5+3 to make 8, and stores the 8\ninto the \"a\" container, overwriting the\nprevious contents. \n\nNote that in a Python program \"a = a+5\"\nmeans <b>assign</b> the value of \"a+5\" to \"a\",\nnot that \"a\" is equal to \"a+5\".";
+        "270";
+        return ρσ_list_decorate([ 2, "a", null, 5, 3, "+", 8, "a" ]);
+    };
+    if (!step2a.__module__) Object.defineProperties(step2a, {
+        __module__ : {value: null}
+    });
+
+    "272";
+    async function step2b(nt, bt) {
+        "273";
+        prompt.text = nexttext.format(3);
+        "274";
+        prompt.color = orange;
+        "275";
+        if (bt) {
+            "276";
+            ρσ_getitem(ρσ_getitem(vars, "a"), "value").text = "5";
+            "277";
+            (await toggle(2));
+            "278";
+            (await toggle(2));
+            "279";
+            return;
+        }
+        "280";
+        (await toggle(2));
+        "281";
+        (await toggle(3));
+    };
+    if (!step2b.__argnames__) Object.defineProperties(step2b, {
+        __argnames__ : {value: ["nt", "bt"]},
+        __module__ : {value: null}
+    });
+
+    "283";
+    async function step3a() {
+        "284";
+        repeat.text = rtext.format(step);
+        "285";
+        repeat.disabled = true;
+        "286";
+        (await clearmemory());
+        "287";
+        ρσ_getitem(ρσ_getitem(vars, "a"), "value").text = "8";
+        "288";
+        ρσ_getitem(ρσ_getitem(vars, "a"), "tag").visible = true;
+        "293";
+        comment.text = "The CPU chooses an available container\nin computer memory, places the number 10\nin that container, and makes a note that\nthis location in memory can be referred\nto with the name \"b\".";
+        "294";
+        return ρσ_list_decorate([ 3, null, null, 10, null, null, 10, "b" ]);
+    };
+    if (!step3a.__module__) Object.defineProperties(step3a, {
+        __module__ : {value: null}
+    });
+
+    "296";
+    async function step3b(nt, bt) {
+        "297";
+        prompt.text = nexttext.format(4);
+        "298";
+        prompt.color = orange;
+        "299";
+        if (bt) {
+            "300";
+            ρσ_getitem(ρσ_getitem(vars, "b"), "value").text = "";
+            "301";
+            ρσ_getitem(ρσ_getitem(vars, "b"), "tag").visible = false;
+            "302";
+            (await toggle(3));
+            "303";
+            (await toggle(3));
+            "304";
+            return;
+        }
+        "305";
+        (await toggle(3));
+        "306";
+        (await toggle(4));
+    };
+    if (!step3b.__argnames__) Object.defineProperties(step3b, {
+        __argnames__ : {value: ["nt", "bt"]},
+        __module__ : {value: null}
+    });
+
+    "308";
+    async function step4a() {
+        "309";
+        "310";
+        a = 8;
+        "311";
+        b = 10;
+        "312";
+        repeat.text = rtext.format(step);
+        "313";
+        repeat.disabled = true;
+        "314";
+        (await clearmemory());
+        "315";
+        ρσ_getitem(ρσ_getitem(vars, "a"), "value").text = "8";
+        "316";
+        ρσ_getitem(ρσ_getitem(vars, "a"), "tag").visible = true;
+        "317";
+        ρσ_getitem(ρσ_getitem(vars, "b"), "value").text = "10";
+        "318";
+        ρσ_getitem(ρσ_getitem(vars, "b"), "tag").visible = true;
+        "322";
+        comment.text = "The CPU reads 8 from the \"a\" container,\nreads 10 from the \"b\" container, adds 8+10\nto make 18, and stores the 18 into the \"a\"\ncontainer, overwriting the previous contents.";
+        "323";
+        return ρσ_list_decorate([ 4, "a", "b", 8, 10, "+", 18, "a" ]);
+    };
+    if (!step4a.__module__) Object.defineProperties(step4a, {
+        __module__ : {value: null}
+    });
+
+    "325";
+    async function step4b(nt, bt) {
+        "326";
+        prompt.text = nexttext.format(5);
+        "327";
+        prompt.color = orange;
+        "328";
+        if (bt) {
+            "329";
+            ρσ_getitem(ρσ_getitem(vars, "a"), "value").text = "8";
+            "330";
+            (await toggle(4));
+            "331";
+            (await toggle(4));
+            "332";
+            return;
+        }
+        "333";
+        (await toggle(4));
+        "334";
+        (await toggle(5));
+    };
+    if (!step4b.__argnames__) Object.defineProperties(step4b, {
+        __argnames__ : {value: ["nt", "bt"]},
+        __module__ : {value: null}
+    });
+
+    "336";
+    async function step5a() {
+        "337";
+        "338";
+        a = 18;
+        "339";
+        b = 10;
+        "340";
+        repeat.text = rtext.format(step);
+        "341";
+        repeat.disabled = true;
+        "342";
+        (await clearmemory());
+        "343";
+        ρσ_getitem(ρσ_getitem(vars, "a"), "value").text = "18";
+        "344";
+        ρσ_getitem(ρσ_getitem(vars, "a"), "tag").visible = true;
+        "345";
+        ρσ_getitem(ρσ_getitem(vars, "b"), "value").text = "10";
+        "346";
+        ρσ_getitem(ρσ_getitem(vars, "b"), "tag").visible = true;
+        "348";
+        comment.text = "The CPU stores 1 into the \"b\" container,\noverwriting the previous contents.";
+        "349";
+        return ρσ_list_decorate([ 5, null, null, 1, null, null, 1, "b" ]);
+    };
+    if (!step5a.__module__) Object.defineProperties(step5a, {
+        __module__ : {value: null}
+    });
+
+    "351";
+    async function step5b(nt, bt) {
+        "352";
+        prompt.text = nexttext.format(6);
+        "353";
+        prompt.color = orange;
+        "354";
+        if (bt) {
+            "355";
+            ρσ_getitem(ρσ_getitem(vars, "b"), "value").text = "10";
+            "356";
+            (await toggle(5));
+            "357";
+            (await toggle(5));
+            "358";
+            return;
+        }
+        "359";
+        (await toggle(5));
+        "360";
+        (await toggle(6));
+    };
+    if (!step5b.__argnames__) Object.defineProperties(step5b, {
+        __argnames__ : {value: ["nt", "bt"]},
+        __module__ : {value: null}
+    });
+
+    "362";
+    async function step6a() {
+        "363";
+        "364";
+        a = 18;
+        "365";
+        b = 1;
+        "366";
+        repeat.text = rtext.format(step);
+        "367";
+        repeat.disabled = true;
+        "368";
+        (await clearmemory());
+        "369";
+        ρσ_getitem(ρσ_getitem(vars, "a"), "value").text = "18";
+        "370";
+        ρσ_getitem(ρσ_getitem(vars, "a"), "tag").visible = true;
+        "371";
+        ρσ_getitem(ρσ_getitem(vars, "b"), "value").text = "1";
+        "372";
+        ρσ_getitem(ρσ_getitem(vars, "b"), "tag").visible = true;
+        "377";
+        comment.text = "The CPU chooses an available container\nin computer memory, places 0 in that\ncontainer, and makes a note that this\nlocation in memory can be referred to\nwith the name \"sum\".";
+        "378";
+        return ρσ_list_decorate([ 6, null, null, 0, null, null, 0, "sum" ]);
+    };
+    if (!step6a.__module__) Object.defineProperties(step6a, {
+        __module__ : {value: null}
+    });
+
+    "380";
+    async function step6b(nt, bt) {
+        "381";
+        prompt.text = nexttext.format(7);
+        "382";
+        prompt.color = orange;
+        "383";
+        if (bt) {
+            "384";
+            ρσ_getitem(ρσ_getitem(vars, "sum"), "value").text = "";
+            "385";
+            ρσ_getitem(ρσ_getitem(vars, "sum"), "tag").visible = false;
+            "386";
+            (await toggle(6));
+            "387";
+            (await toggle(6));
+            "388";
+            return;
+        }
+        "389";
+        (await toggle(6));
+        "390";
+        (await toggle(7));
+    };
+    if (!step6b.__argnames__) Object.defineProperties(step6b, {
+        __argnames__ : {value: ["nt", "bt"]},
+        __module__ : {value: null}
+    });
+
+    "392";
+    async function step7a() {
+        var ρσ_ls, a, i, next, nt, bt;
+        "393";
+        "394";
+        if ((b === 1 || typeof b === "object" && ρσ_equals(b, 1))) {
+            sum = 0;
+        } else if ((b === 2 || typeof b === "object" && ρσ_equals(b, 2))) {
+            sum = 1;
+        } else if ((b === 3 || typeof b === "object" && ρσ_equals(b, 3))) {
+            sum = 3;
+        } else if ((b === 4 || typeof b === "object" && ρσ_equals(b, 4))) {
+            sum = 6;
+        }
+        "398";
+        a = 18;
+        "399";
+        repeat.text = rtext.format(step);
+        "400";
+        repeat.disabled = true;
+        "401";
+        (await clearmemory());
+        "402";
+        ρσ_getitem(ρσ_getitem(vars, "a"), "value").text = "18";
+        "403";
+        ρσ_getitem(ρσ_getitem(vars, "a"), "tag").visible = true;
+        "404";
+        ρσ_getitem(ρσ_getitem(vars, "b"), "value").text = b;
+        "405";
+        ρσ_getitem(ρσ_getitem(vars, "b"), "tag").visible = true;
+        "406";
+        ρσ_getitem(ρσ_getitem(vars, "sum"), "value").text = sum;
+        "407";
+        ρσ_getitem(ρσ_getitem(vars, "sum"), "tag").visible = true;
+        "408";
+        (await clearprints());
+        "409";
+        for (var ρσ_Index9 = 0; ρσ_Index9["<"](b["-"](1["*"](1))); ρσ_Index9++) {
+            i = ρσ_Index9;
+            "410";
+            ρσ_getitem(prints, i).visible = true;
+        }
+        "411";
+        lvaldrag.pos = vec(120, 50, 0);
+        "412";
+        lvaldrag.text = "{} < 4 ?".format(b);
+        "413";
+        lvaldrag.color = color.black;
+        "414";
+        next = 8;
+        "415";
+        if ((b === 1 || typeof b === "object" && ρσ_equals(b, 1))) {
+            "416";
+            loopoutline.visible = true;
+            "424";
+            comment.text = "Start of a \"while\" loop that repeatedly\nexecutes the indented lines 8 through 10\nuntil \"b\" is no longer less than 4. Initially\n\"b\" is equal to 1, so the indented lines\nwill be executed. This loop will add up\nthe numbers 1 through 3, in \"sum\".\n\nThe outlined structure is called a \"loop\".";
+            "425";
+        } else if (b["<"](4)) {
+            "426";
+            loopoutline.visible = false;
+            "430";
+            comment.text = "The program reached the end of the\nloop and branched back to line 7. Since\n\"b\" is {}, which is less than 4, the CPU\nwill again execute the indented statements.".format(b);
+            "431";
+        } else {
+            "432";
+            loopoutline.visible = false;
+            "433";
+            next = 11;
+            "438";
+            comment.text = "The program reached the end of the\nloop and branched back to line 7. Since \n\"b\" is 4, which is not less than 4, the\nCPU will branch to line 11, exiting the\nloop.";
+        }
+        "439";
+        prompt.text = "Click the NEXT button to go to line {}.".format(next);
+        "440";
+        prompt.color = orange;
+        "441";
+        while (true) {
+            "442";
+            (await rate(30));
+            "443";
+            if (restarting) {
+                return;
+            }
+            "444";
+            nt = (await checknext());
+            "445";
+            bt = (await checkrepeat());
+            "446";
+            if (nt || bt) {
+                break;
+            }
+        }
+        "447";
+        lvaldrag.text = "";
+        "448";
+        if (bt) {
+            "449";
+            if ((b === 1 || typeof b === "object" && ρσ_equals(b, 1))) {
+                "450";
+                (await toggle(7));
+                "451";
+                (await toggle(6));
+                "452";
+                return;
+                "453";
+            } else {
+                "454";
+                (await toggle(7));
+                "455";
+                (await toggle(10));
+                "456";
+                return;
+            }
+        }
+        "457";
+        (await toggle(7));
+        "458";
+        (await toggle(next));
+    };
+    if (!step7a.__module__) Object.defineProperties(step7a, {
+        __module__ : {value: null}
+    });
+
+    "460";
+    async function step8a() {
+        var ρσ_ls, answer, i, p;
+        "461";
+        "462";
+        if ((b === 1 || typeof b === "object" && ρσ_equals(b, 1))) {
+            "463";
+            sum = 0;
+            "464";
+            answer = 1;
+            "465";
+        } else if ((b === 2 || typeof b === "object" && ρσ_equals(b, 2))) {
+            "466";
+            sum = 1;
+            "467";
+            answer = 3;
+            "468";
+        } else if ((b === 3 || typeof b === "object" && ρσ_equals(b, 3))) {
+            "469";
+            sum = 3;
+            "470";
+            answer = 6;
+        }
+        "471";
+        repeat.text = rtext.format(step);
+        "472";
+        repeat.disabled = true;
+        "473";
+        (await clearmemory());
+        "474";
+        ρσ_getitem(ρσ_getitem(vars, "a"), "value").text = "18";
+        "475";
+        ρσ_getitem(ρσ_getitem(vars, "a"), "tag").visible = true;
+        "476";
+        ρσ_getitem(ρσ_getitem(vars, "b"), "value").text = b;
+        "477";
+        ρσ_getitem(ρσ_getitem(vars, "b"), "tag").visible = true;
+        "478";
+        ρσ_getitem(ρσ_getitem(vars, "sum"), "value").text = sum;
+        "479";
+        ρσ_getitem(ρσ_getitem(vars, "sum"), "tag").visible = true;
+        "480";
+        (await clearprints());
+        "481";
+        for (var ρσ_Index10 = 0; ρσ_Index10["<"](b["-"](1["*"](1))); ρσ_Index10++) {
+            i = ρσ_Index10;
+            "482";
+            ρσ_getitem(prints, i).visible = true;
+        }
+        "483";
+        comment.color = color.black;
+        "484";
+        p = "incorrect";
+        "485";
+        if ((prediction === answer || typeof prediction === "object" && ρσ_equals(prediction, answer))) {
+            "486";
+            p = "correct";
+        }
+        "487";
+        comment.color = orange;
+        "488";
+        comment.text = "Your \"sum\" prediction, {}, is {}.".format(prediction, p);
+        "489";
+        if ((b === 1 || typeof b === "object" && ρσ_equals(b, 1))) {
+            "490";
+            varcomment.visible = true;
+            "491";
+            varcomment.color = color.black;
+            "492";
+            varcomment.pos.y = comment.pos.y["-"](1["*"](2)["*"](lineheight));
+            "497";
+            varcomment.text = "The CPU reads {} from the \"sum\" container,\nreads {} from the \"b\" container, adds\n{}+{} to make {}, and stores {} into\nthe \"sum\" container, overwriting the\nprevious contents.".format(sum, b, sum, b, sum["+"](b), sum["+"](b));
+        }
+        "498";
+        next.disabled = false;
+        "499";
+        return ρσ_list_decorate([ 8, "sum", "b", sum, b, "+", sum["+"](b), "sum" ]);
+    };
+    if (!step8a.__module__) Object.defineProperties(step8a, {
+        __module__ : {value: null}
+    });
+
+    "501";
+    async function step8b(nt, bt) {
+        "502";
+        varcomment.pos.y=varcomment.pos.y["+"](2["*"](lineheight));
+        "503";
+        varcomment.text = "";
+        "504";
+        varcomment.visible = false;
+        "505";
+        comment.color = color.black;
+        "506";
+        comment.text = "";
+        "507";
+        prompt.text = nexttext.format(9);
+        "508";
+        prompt.color = orange;
+        "509";
+        if (bt) {
+            "510";
+            ρσ_getitem(ρσ_getitem(vars, "sum"), "value").text = sum["-"](1["*"](1));
+            "511";
+            (await toggle(8));
+            "512";
+            (await toggle(8));
+            "513";
+            return;
+        }
+        "514";
+        (await toggle(8));
+        "515";
+        (await toggle(9));
+    };
+    if (!step8b.__argnames__) Object.defineProperties(step8b, {
+        __argnames__ : {value: ["nt", "bt"]},
+        __module__ : {value: null}
+    });
+
+    "517";
+    async function step9a() {
+        var ρσ_ls, i;
+        "518";
+        "519";
+        if ((b === 1 || typeof b === "object" && ρσ_equals(b, 1))) {
+            sum = 1;
+        } else if ((b === 2 || typeof b === "object" && ρσ_equals(b, 2))) {
+            sum = 3;
+        } else if ((b === 3 || typeof b === "object" && ρσ_equals(b, 3))) {
+            sum = 6;
+        }
+        "522";
+        repeat.text = rtext.format(step);
+        "523";
+        repeat.disabled = true;
+        "524";
+        (await clearmemory());
+        "525";
+        ρσ_getitem(ρσ_getitem(vars, "a"), "value").text = "18";
+        "526";
+        ρσ_getitem(ρσ_getitem(vars, "a"), "tag").visible = true;
+        "527";
+        ρσ_getitem(ρσ_getitem(vars, "b"), "value").text = b;
+        "528";
+        ρσ_getitem(ρσ_getitem(vars, "b"), "tag").visible = true;
+        "529";
+        ρσ_getitem(ρσ_getitem(vars, "sum"), "value").text = sum;
+        "530";
+        ρσ_getitem(ρσ_getitem(vars, "sum"), "tag").visible = true;
+        "531";
+        (await clearprints());
+        "532";
+        for (var ρσ_Index11 = 0; ρσ_Index11["<"](b["-"](1["*"](1))); ρσ_Index11++) {
+            i = ρσ_Index11;
+            "533";
+            ρσ_getitem(prints, i).visible = true;
+        }
+        "536";
+        comment.text = "The CPU reads {} from the \"b\" container\nand {} from the \"sum\" container, and\nprints their values.".format(b, sum);
+        "537";
+        return ρσ_list_decorate([ 9, "b", "sum", b, sum, null, null, null ]);
+    };
+    if (!step9a.__module__) Object.defineProperties(step9a, {
+        __module__ : {value: null}
+    });
+
+    "539";
+    async function step9b(nt, bt) {
+        "540";
+        prompt.text = nexttext.format(10);
+        "541";
+        prompt.color = orange;
+        "542";
+        if (bt) {
+            "543";
+            (await toggle(9));
+            "544";
+            (await toggle(9));
+            "545";
+            return;
+        }
+        "546";
+        (await toggle(9));
+        "547";
+        (await toggle(10));
+    };
+    if (!step9b.__argnames__) Object.defineProperties(step9b, {
+        __argnames__ : {value: ["nt", "bt"]},
+        __module__ : {value: null}
+    });
+
+    "549";
+    async function step10a() {
+        var ρσ_ls, i;
+        "550";
+        "551";
+        if ((b === 1 || typeof b === "object" && ρσ_equals(b, 1))) {
+            sum = 1;
+        } else if ((b === 2 || typeof b === "object" && ρσ_equals(b, 2))) {
+            sum = 3;
+        } else if ((b === 3 || typeof b === "object" && ρσ_equals(b, 3))) {
+            sum = 6;
+        }
+        "554";
+        repeat.text = rtext.format(step);
+        "555";
+        repeat.disabled = true;
+        "556";
+        (await clearmemory());
+        "557";
+        ρσ_getitem(ρσ_getitem(vars, "a"), "value").text = "18";
+        "558";
+        ρσ_getitem(ρσ_getitem(vars, "a"), "tag").visible = true;
+        "559";
+        ρσ_getitem(ρσ_getitem(vars, "b"), "value").text = b;
+        "560";
+        ρσ_getitem(ρσ_getitem(vars, "b"), "tag").visible = true;
+        "561";
+        ρσ_getitem(ρσ_getitem(vars, "sum"), "value").text = sum;
+        "562";
+        ρσ_getitem(ρσ_getitem(vars, "sum"), "tag").visible = true;
+        "563";
+        (await clearprints());
+        "564";
+        for (var ρσ_Index12 = 0; ρσ_Index12["<"](b); ρσ_Index12++) {
+            i = ρσ_Index12;
+            "565";
+            ρσ_getitem(prints, i).visible = true;
+        }
+        "569";
+        comment.text = "The CPU reads {} from the \"b\" container,\nadds {}+1 to make {}, and stores {} into \nthe \"b\" container, overwriting the\nprevious contents.".format(b, b, b["+"](1), b["+"](1));
+        "570";
+        return ρσ_list_decorate([ 10, "b", null, b, 1, "+", b["+"](1), "b" ]);
+    };
+    if (!step10a.__module__) Object.defineProperties(step10a, {
+        __module__ : {value: null}
+    });
+
+    "572";
+    async function step10b(nt, bt) {
+        "573";
+        "574";
+        prompt.text = "Branch back to line 7.";
+        "575";
+        prompt.color = orange;
+        "576";
+        if (bt) {
+            "577";
+            b=b["-"](1);
+            "578";
+            (await toggle(10));
+            "579";
+            (await toggle(10));
+            "580";
+            return;
+        }
+        "581";
+        (await toggle(10));
+        "582";
+        (await toggle(7));
+    };
+    if (!step10b.__argnames__) Object.defineProperties(step10b, {
+        __argnames__ : {value: ["nt", "bt"]},
+        __module__ : {value: null}
+    });
+
+    "584";
+    async function step11a() {
+        var ρσ_ls, i;
+        "585";
+        "586";
+        b = 4;
+        "587";
+        sum = 6;
+        "588";
+        repeat.text = rtext.format(step);
+        "589";
+        repeat.disabled = true;
+        "590";
+        (await clearmemory());
+        "591";
+        ρσ_getitem(ρσ_getitem(vars, "a"), "value").text = "18";
+        "592";
+        ρσ_getitem(ρσ_getitem(vars, "a"), "tag").visible = true;
+        "593";
+        ρσ_getitem(ρσ_getitem(vars, "b"), "value").text = b;
+        "594";
+        ρσ_getitem(ρσ_getitem(vars, "b"), "tag").visible = true;
+        "595";
+        ρσ_getitem(ρσ_getitem(vars, "sum"), "value").text = sum;
+        "596";
+        ρσ_getitem(ρσ_getitem(vars, "sum"), "tag").visible = true;
+        "597";
+        (await clearprints());
+        "598";
+        for (var ρσ_Index13 = 0; ρσ_Index13["<"](b["-"](1["*"](1))); ρσ_Index13++) {
+            i = ρσ_Index13;
+            "599";
+            ρσ_getitem(prints, i).visible = true;
+        }
+        "602";
+        comment.text = "The CPU reads 6 from the \"sum\" container\nand prints this value, with some text\nto name the variable that is shown.".format(b, sum);
+        "603";
+        return ρσ_list_decorate([ 11, null, "sum", "sum = ", sum, null, null, null ]);
+    };
+    if (!step11a.__module__) Object.defineProperties(step11a, {
+        __module__ : {value: null}
+    });
+
+    "605";
+    async function step11b(nt, bt) {
+        "606";
+        if (bt) {
+            "607";
+            (await toggle(11));
+            "608";
+            (await toggle(11));
+            "609";
+            return;
+        }
+        "610";
+        (await toggle(11));
+        "611";
+        (await toggle(1));
+        "612";
+        (await toggle(1));
+    };
+    if (!step11b.__argnames__) Object.defineProperties(step11b, {
+        __argnames__ : {value: ["nt", "bt"]},
+        __module__ : {value: null}
+    });
+
+    "614";
+    async function get_prediction(evt) {
+        "615";
+        "616";
+        prediction = evt.number;
+    };
+    if (!get_prediction.__argnames__) Object.defineProperties(get_prediction, {
+        __argnames__ : {value: ["evt"]},
+        __module__ : {value: null}
+    });
+
+    "620";
+    async function execute() {
+        var ρσ_ls, R, pausing, params, get0, get, linenum, leftarg, rightarg, leftvalue, rightvalue, op, result, store, leftdrag, rightdrag, nprints, isprint, ρσ_unpack, i, p, nvar, lstart, lend, lmove, rmove, rstart, rend, n, nt, bt;
+        "621";
+        "634";
+        R = 50;
+        "635";
+        pausing = 1.5;
+        "637";
+        params = ρσ_list_decorate([]);
+        "639";
+        if ((step === 8 || typeof step === "object" && ρσ_equals(step, 8))) {
+            "640";
+            loopoutline.visible = false;
+            "641";
+            next.disabled = true;
+            "642";
+            repeat.disabled = true;
+            "643";
+            prediction = null;
+            "644";
+            prompt.text = "";
+            "645";
+            comment.color = color.black;
+            "650";
+            comment.text = "\n        \nIn the input box at the bottom of the page,\ntype your prediction of what the value of \n\"sum\" will be after executing line 8.";
+            "652";
+            get0 = ρσ_interpolate_kwargs.call(this, wtext, [ρσ_desugar_kwargs({text: "Type your prediction, then press ENTER: "})]);
+            (await sleep(.1));
+            "653";
+            get = ρσ_interpolate_kwargs.call(this, winput, [ρσ_desugar_kwargs({bind: get_prediction})]);
+            "654";
+            while (true) {
+                "655";
+                (await rate(30));
+                "656";
+                if (restarting) {
+                    "657";
+                    get.remove();
+                    "658";
+                    get0.remove();
+                    "659";
+                    return;
+                    "660";
+                }
+                if (prediction !== null) {
+                    break;
+                }
+            }
+            "661";
+            get0.remove();
+            "662";
+            get.remove();
+            "664";
+        }
+        if ((step === 1 || typeof step === "object" && ρσ_equals(step, 1))) {
+            params = (await step1a());
+        } else if ((step === 2 || typeof step === "object" && ρσ_equals(step, 2))) {
+            params = (await step2a());
+        } else if ((step === 3 || typeof step === "object" && ρσ_equals(step, 3))) {
+            params = (await step3a());
+        } else if ((step === 4 || typeof step === "object" && ρσ_equals(step, 4))) {
+            params = (await step4a());
+        } else if ((step === 5 || typeof step === "object" && ρσ_equals(step, 5))) {
+            params = (await step5a());
+        } else if ((step === 6 || typeof step === "object" && ρσ_equals(step, 6))) {
+            params = (await step6a());
+        } else if ((step === 7 || typeof step === "object" && ρσ_equals(step, 7))) {
+            "671";
+            (await step7a());
+            "672";
+            return;
+            "673";
+        } else if ((step === 8 || typeof step === "object" && ρσ_equals(step, 8))) {
+            params = (await step8a());
+        } else if ((step === 9 || typeof step === "object" && ρσ_equals(step, 9))) {
+            params = (await step9a());
+        } else if ((step === 10 || typeof step === "object" && ρσ_equals(step, 10))) {
+            params = (await step10a());
+        } else if ((step === 11 || typeof step === "object" && ρσ_equals(step, 11))) {
+            params = (await step11a());
+        }
+        "678";
+        linenum = ρσ_getitem(params, 0);
+        "679";
+        leftarg = ρσ_getitem(params, 1);
+        "680";
+        rightarg = ρσ_getitem(params, 2);
+        "681";
+        leftvalue = ρσ_getitem(params, 3);
+        "682";
+        rightvalue = ρσ_getitem(params, 4);
+        "683";
+        op = ρσ_getitem(params, 5);
+        "684";
+        result = ρσ_getitem(params, 6);
+        "685";
+        store = ρσ_getitem(params, 7);
+        "687";
+        prompt.text = seetext.format(step);
+        "688";
+        prompt.color = color.black;
+        "689";
+        prompt.visible = true;
+        "690";
+        while (true) {
+            "691";
+            (await rate(30));
+            "692";
+            if (restarting) {
+                "693";
+                prompt.visible = false;
+                "694";
+                return;
+                "695";
+            }
+            if ((await checknext())) {
+                break;
+            }
+        }
+        "696";
+        prompt.visible = false;
+        "698";
+        if ((step === 2 || typeof step === "object" && ρσ_equals(step, 2))) {
+            "702";
+            comment.text = "The CPU reads 5 from the \"a\" container,\nadds 5+3 to make 8, and stores the 8\ninto the \"a\" container, overwriting the\nprevious contents.";
+        }
+        "704";
+        repeat.disabled = true;
+        "705";
+        next.disabled = true;
+        "706";
+        leftdrag = lvaldrag;
+        "707";
+        rightdrag = rvaldrag;
+        "708";
+        leftdrag.visible = false;
+        "709";
+        rightdrag.visible = false;
+        "710";
+        nprints = 0;
+        "711";
+        isprint = ρσ_getitem(lines, linenum).text.find("print")[">="](0);
+        "712";
+        if (isprint) {
+            "713";
+            var ρσ_Iter14 = enumerate(prints);
+            ρσ_Iter14 = ((typeof ρσ_Iter14[Symbol.iterator] === "function") ? (ρσ_Iter14 instanceof Map ? ρσ_Iter14.keys() : ρσ_Iter14) : Object.keys(ρσ_Iter14));
+            for (var ρσ_Index14 of ρσ_Iter14) {
+                ρσ_unpack = ρσ_Index14;
+                i = ρσ_unpack[0];
+                p = ρσ_unpack[1];
+                "714";
+                if (!p.visible) {
+                    "715";
+                    nprints = i;
+                    "716";
+                    break;
+                    "717";
+                }
+            }
+        }
+        if (ρσ_in(store, vars)) {
+            "718";
+            nvar = ρσ_getitem(ρσ_getitem(vars, store), "nvar");
+            "719";
+        }
+        if (leftarg === null && rightarg === null) {
+            "720";
+            lstart = ρσ_getitem(linenumbers, linenum).pos["+"](vec(50, 0, 0));
+            "721";
+            lend = xleft;
+            "722";
+            lmove = lend["-"](1["*"](lstart));
+            "723";
+            rmove = null;
+            "724";
+            lvaldrag.pos = lstart;
+            "725";
+            lvaldrag.color = orange;
+            "726";
+            lvaldrag.text = leftvalue;
+            "727";
+        } else if (rightarg === null) {
+            "728";
+            lstart = vec(40["+"](.85["*"](hw))["/"](2), 1["-u"]()["*"](ρσ_getitem(ρσ_getitem(vars, leftarg), "nvar"))["*"](40)["-"](1["*"](shift))["+"](13), 0);
+            "729";
+            lend = xleft;
+            "730";
+            lmove = lend["-"](1["*"](lstart));
+            "731";
+            lvaldrag.pos = lstart;
+            "732";
+            lvaldrag.color = color.black;
+            "733";
+            lvaldrag.text = leftvalue;
+            "734";
+            rstart = ρσ_getitem(linenumbers, linenum).pos["+"](vec(50, 0, 0));
+            "735";
+            rend = xright;
+            "736";
+            rmove = rend["-"](1["*"](rstart));
+            "737";
+            rvaldrag.pos = rstart;
+            "738";
+            rvaldrag.color = orange;
+            "739";
+            rvaldrag.text = rightvalue;
+            "740";
+        } else if (leftarg === null) {
+            "741";
+            lstart = ρσ_getitem(linenumbers, linenum).pos["+"](vec(50, 0, 0));
+            "742";
+            lend = xleft;
+            "743";
+            lmove = lend["-"](1["*"](lstart));
+            "744";
+            lvaldrag.pos = lstart;
+            "745";
+            lvaldrag.color = orange;
+            "746";
+            lvaldrag.text = leftvalue;
+            "747";
+            rstart = vec(40["+"](.85["*"](hw))["/"](2), 1["-u"]()["*"](ρσ_getitem(ρσ_getitem(vars, rightarg), "nvar"))["*"](40)["-"](1["*"](shift))["+"](13), 0);
+            "748";
+            rend = xright;
+            "749";
+            rmove = rend["-"](1["*"](rstart));
+            "750";
+            rvaldrag.pos = rstart;
+            "751";
+            rvaldrag.color = orange;
+            "752";
+            rvaldrag.text = rightvalue;
+            "753";
+        } else {
+            "754";
+            lstart = vec(40["+"](.85["*"](hw))["/"](2), 1["-u"]()["*"](ρσ_getitem(ρσ_getitem(vars, leftarg), "nvar"))["*"](40)["-"](1["*"](shift))["+"](13), 0);
+            "755";
+            lend = xleft;
+            "756";
+            lmove = lend["-"](1["*"](lstart));
+            "757";
+            lvaldrag.pos = lstart;
+            "758";
+            lvaldrag.color = color.black;
+            "759";
+            lvaldrag.text = leftvalue;
+            "760";
+            rstart = vec(40["+"](.85["*"](hw))["/"](2), 1["-u"]()["*"](ρσ_getitem(ρσ_getitem(vars, rightarg), "nvar"))["*"](40)["-"](1["*"](shift))["+"](13), 0);
+            "761";
+            rend = xright;
+            "762";
+            rmove = rend["-"](1["*"](rstart));
+            "763";
+            rvaldrag.pos = rstart;
+            "764";
+            rvaldrag.color = color.black;
+            "765";
+            rvaldrag.text = rightvalue;
+        }
+        "766";
+        leftdrag.visible = true;
+        "767";
+        rightdrag.visible = true;
+        "769";
+        for (var ρσ_Index15 = 0; ρσ_Index15["<"](50); ρσ_Index15++) {
+            n = ρσ_Index15;
+            "770";
+            (await rate(R));
+            "771";
+            if (restarting) {
+                return;
+            }
+            "772";
+            leftdrag.pos=leftdrag.pos["+"](.02["*"](lmove));
+            "773";
+            if (rmove !== null) {
+                rightdrag.pos=rightdrag.pos["+"](.02["*"](rmove));
+            }
+            "775";
+        }
+        if (op !== null) {
+            "776";
+            oplabel.text = op;
+            "777";
+            eqlabel.text = "=";
+            "778";
+            resultlabel.pos = xresult;
+            "779";
+            resultlabel.text = result;
+        }
+        "781";
+        (await sleep(pausing));
+        "782";
+        if (restarting) {
+            return;
+        }
+        "784";
+        if (leftarg === null && rightarg === null) {
+            "785";
+            lstart = lend;
+            "786";
+            lend = vec(40["+"](.85["*"](hw))["/"](2), 1["-u"]()["*"](nvar)["*"](40)["-"](1["*"](shift))["+"](13), 0);
+            "787";
+            lmove = lend["-"](1["*"](lstart));
+            "788";
+            leftdrag = lvaldrag;
+            "789";
+        } else if (rightarg === null) {
+            "790";
+            lvaldrag.text = "";
+            "791";
+            rvaldrag.text = "";
+            "792";
+            oplabel.text = "";
+            "793";
+            eqlabel.text = "";
+            "794";
+            lstart = resultlabel.pos;
+            "795";
+            lend = vec(40["+"](.85["*"](hw))["/"](2), 1["-u"]()["*"](ρσ_getitem(ρσ_getitem(vars, leftarg), "nvar"))["*"](40)["-"](1["*"](shift))["+"](13), 0);
+            "796";
+            lmove = lend["-"](1["*"](lstart));
+            "797";
+            leftdrag = resultlabel;
+            "798";
+        } else {
+            "799";
+            if (isprint) {
+                "800";
+                lstart = lvaldrag.pos;
+                "801";
+                lend = vec(left, 1["-u"]()["*"](30)["-"](1["*"](nprints)["*"](30)), 0);
+                "802";
+                rstart = rvaldrag.pos;
+                "803";
+                rend = vec(left["+"](60), 1["-u"]()["*"](30)["-"](1["*"](nprints)["*"](30)), 0);
+                "804";
+                if ((step === 11 || typeof step === "object" && ρσ_equals(step, 11))) {
+                    "805";
+                    lend.x=lend.x["+"](45);
+                    "806";
+                    rend.x=rend.x["+"](40);
+                }
+                "807";
+                lmove = lend["-"](1["*"](lstart));
+                "808";
+                rmove = rend["-"](1["*"](rstart));
+                "809";
+                leftdrag = lvaldrag;
+                "810";
+            } else {
+                "811";
+                lvaldrag.text = "";
+                "812";
+                rvaldrag.text = "";
+                "813";
+                oplabel.text = "";
+                "814";
+                eqlabel.text = "";
+                "815";
+                lstart = resultlabel.pos = xresult;
+                "816";
+                lend = vec(40["+"](.85["*"](hw))["/"](2), 1["-u"]()["*"](ρσ_getitem(ρσ_getitem(vars, leftarg), "nvar"))["*"](40)["-"](1["*"](shift))["+"](13), 0);
+                "817";
+                rmove = null;
+                "818";
+                leftdrag = resultlabel;
+            }
+            "819";
+            lmove = lend["-"](1["*"](lstart));
+        }
+        "821";
+        for (var ρσ_Index16 = 0; ρσ_Index16["<"](50); ρσ_Index16++) {
+            n = ρσ_Index16;
+            "822";
+            (await rate(R));
+            "823";
+            if (restarting) {
+                return;
+            }
+            "824";
+            leftdrag.pos=leftdrag.pos["+"](.02["*"](lmove));
+            "825";
+            if (rmove !== null) {
+                rightdrag.pos=rightdrag.pos["+"](.02["*"](rmove));
+            }
+        }
+        "827";
+        leftdrag.text = "";
+        "828";
+        rvaldrag.text = "";
+        "829";
+        if (isprint) {
+            "830";
+            ρσ_getitem(prints, nprints).visible = true;
+            "831";
+        } else {
+            "832";
+            ρσ_getitem(ρσ_getitem(vars, store), "tag").visible = true;
+            "833";
+            ρσ_getitem(ρσ_getitem(vars, store), "value").pos = lend;
+            "834";
+            ρσ_getitem(ρσ_getitem(vars, store), "value").text = result;
+            "835";
+            if ((store === "a" || typeof store === "object" && ρσ_equals(store, "a"))) {
+                a = result;
+            } else if ((store === "b" || typeof store === "object" && ρσ_equals(store, "b"))) {
+                b = result;
+            } else if ((store === "sum" || typeof store === "object" && ρσ_equals(store, "sum"))) {
+                sum = result;
+            }
+        }
+        "839";
+        repeat.disabled = false;
+        "840";
+        next.disabled = false;
+        "841";
+        if ((step === 10 || typeof step === "object" && ρσ_equals(step, 10))) {
+            "842";
+            prompt.text = nexttext.format(7);
+            "843";
+        } else if ((step === 11 || typeof step === "object" && ρσ_equals(step, 11))) {
+            "844";
+            prompt.text = nexttext.format(1);
+            "845";
+        } else {
+            "846";
+            prompt.text = nexttext.format(step["+"](1));
+        }
+        "847";
+        prompt.color = orange;
+        "848";
+        prompt.visible = true;
+        "849";
+        while (true) {
+            "850";
+            (await rate(30));
+            "851";
+            if (restarting) {
+                return;
+            }
+            "852";
+            nt = (await checknext());
+            "853";
+            bt = (await checkrepeat());
+            "854";
+            if (nt || bt) {
+                break;
+            }
+            "856";
+        }
+        if ((step === 1 || typeof step === "object" && ρσ_equals(step, 1))) {
+            (await step1b(nt, bt));
+        } else if ((step === 2 || typeof step === "object" && ρσ_equals(step, 2))) {
+            (await step2b(nt, bt));
+        } else if ((step === 3 || typeof step === "object" && ρσ_equals(step, 3))) {
+            (await step3b(nt, bt));
+        } else if ((step === 4 || typeof step === "object" && ρσ_equals(step, 4))) {
+            (await step4b(nt, bt));
+        } else if ((step === 5 || typeof step === "object" && ρσ_equals(step, 5))) {
+            (await step5b(nt, bt));
+        } else if ((step === 6 || typeof step === "object" && ρσ_equals(step, 6))) {
+            (await step6b(nt, bt));
+        } else if ((step === 7 || typeof step === "object" && ρσ_equals(step, 7))) {
+            return;
+        } else if ((step === 8 || typeof step === "object" && ρσ_equals(step, 8))) {
+            (await step8b(nt, bt));
+        } else if ((step === 9 || typeof step === "object" && ρσ_equals(step, 9))) {
+            (await step9b(nt, bt));
+        } else if ((step === 10 || typeof step === "object" && ρσ_equals(step, 10))) {
+            (await step10b(nt, bt));
+        } else if ((step === 11 || typeof step === "object" && ρσ_equals(step, 11))) {
+            (await step11b(nt, bt));
+        }
+    };
+    if (!execute.__module__) Object.defineProperties(execute, {
+        __module__ : {value: null}
+    });
+
+    "868";
+    while (true) {
+        "869";
+        if ((step === 1 || typeof step === "object" && ρσ_equals(step, 1))) {
+            (await execute());
+        }
+        "870";
+        if ((step === 2 || typeof step === "object" && ρσ_equals(step, 2))) {
+            (await execute());
+        }
+        "871";
+        if ((step === 3 || typeof step === "object" && ρσ_equals(step, 3))) {
+            (await execute());
+        }
+        "872";
+        if ((step === 4 || typeof step === "object" && ρσ_equals(step, 4))) {
+            (await execute());
+        }
+        "873";
+        if ((step === 5 || typeof step === "object" && ρσ_equals(step, 5))) {
+            (await execute());
+        }
+        "874";
+        if ((step === 6 || typeof step === "object" && ρσ_equals(step, 6))) {
+            (await execute());
+        }
+        "876";
+        if ((step === 7 || typeof step === "object" && ρσ_equals(step, 7))) {
+            (await execute());
+        }
+        "877";
+        if ((step === 8 || typeof step === "object" && ρσ_equals(step, 8))) {
+            (await execute());
+        }
+        "878";
+        if ((step === 9 || typeof step === "object" && ρσ_equals(step, 9))) {
+            (await execute());
+        }
+        "879";
+        if ((step === 10 || typeof step === "object" && ρσ_equals(step, 10))) {
+            (await execute());
+        }
+        "881";
+        if ((step === 11 || typeof step === "object" && ρσ_equals(step, 11))) {
+            (await execute());
+        }
+    }
+};
+if (!__main__.__module__) Object.defineProperties(__main__, {
+    __module__ : {value: null}
+});
+
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+// END JAVASCRIPT
+
+//--><!]]></script>
+</div>
